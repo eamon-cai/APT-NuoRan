@@ -212,21 +212,6 @@ def jieshu():
         except:
             pass
 
-class MoveMods():
-    def __init__(self, mod):
-        if mod == '罗技移动':
-            self.Move = mouse_move
-            logger.info('移动方式---Ghub')
-        elif mod == 'Win移动':
-            self.Move = ctypes_moveR
-            logger.info('移动方式---Win')
-        else:
-            self.Move = None
-
-    def moveto(self, x, y):
-        self.Move(x, y)
-
-
 def main():
     global text12, text13, qidong, text1, text2, text3, text4, text14, save_jx, text15, tuichu
     global button_mzl, button_mzr, button_kzq, button_kzy, button_kzz, button_kzq, text16, text17
@@ -275,8 +260,6 @@ def main():
         return
 
     logger.info('获取配置参数---完成')
-
-    MoveS = MoveMods(mobile_type)
 
     # 获取 user32.dll 的句柄
     user32 = ctypes.windll.user32
@@ -507,7 +490,7 @@ def main():
                             last_point = None
                             for point in path:
                                 last_point = point
-                            MoveS.moveto(int(last_point[0]), int(last_point[1]))
+                            pass
                         else:
                             PID.reset(tspidx)
                             PID.reset(tspidy)
